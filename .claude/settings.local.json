@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)",
+      "Read(//c/Users/erdem/OneDrive/Masaüstü/**)",
+      "Bash(npx create-next-app@latest ie304-app --typescript --tailwind --eslint --app --no-src-dir --no-import-alias --use-npm)",
+      "Bash(cp package.json package-lock.json postcss.config.mjs tsconfig.json \"C:/Users/erdem/OneDrive/Masaüstü/ie304-project/\")",
+      "Bash(cp -r public \"C:/Users/erdem/OneDrive/Masaüstü/ie304-project/\")",
+      "Bash(rm -rf \"C:/Users/erdem/OneDrive/Masaüstü/ie304-app\")",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "WebFetch(domain:sp-ie.metu.edu.tr)",
+      "Bash(node -e \"const p = require.resolve\\('langchain/package.json'\\); const pkg = require\\(p\\); console.log\\(pkg.version\\);\")",
+      "Bash(node -e \"try { require.resolve\\('langchain/vectorstores/memory'\\); console.log\\('OK'\\); } catch\\(e\\) { console.log\\('NOT FOUND'\\); }\")",
+      "Bash(node -e \"try { require.resolve\\('@langchain/community/vectorstores/memory'\\); console.log\\('OK community'\\); } catch\\(e\\) { console.log\\('NOT FOUND community'\\); }\")",
+      "Bash(node -e \"try { require.resolve\\('langchain/vectorstores'\\); console.log\\('OK'\\); } catch\\(e\\) { console.log\\(e.message.substring\\(0,200\\)\\); }\")",
+      "Bash(node -e \"const pkg = require\\('langchain/package.json'\\); const exports = pkg.exports; const keys = Object.keys\\(exports\\).filter\\(k => k.includes\\('vector'\\) || k.includes\\('memory'\\) || k.includes\\('text_splitter'\\) || k.includes\\('splitter'\\)\\); console.log\\(keys\\);\")",
+      "Bash(node -e \"const pkg = require\\('langchain/package.json'\\); const keys = Object.keys\\(pkg.exports\\); keys.forEach\\(k => console.log\\(k\\)\\);\")",
+      "Bash(node -e \"const pkg = require\\('@langchain/core/package.json'\\); const keys = Object.keys\\(pkg.exports\\).filter\\(k => k.includes\\('vector'\\) || k.includes\\('splitter'\\) || k.includes\\('memory'\\)\\); keys.forEach\\(k => console.log\\(k\\)\\);\")",
+      "Bash(node -e \"const vs = require\\('@langchain/core/vectorstores'\\); console.log\\(Object.keys\\(vs\\)\\);\")",
+      "Bash(node -e \"const pkg = require\\('@langchain/textsplitters/package.json'\\); const keys = Object.keys\\(pkg.exports\\); keys.forEach\\(k => console.log\\(k\\)\\);\")",
+      "Bash(node -e \"const e = require\\('@langchain/google-genai'\\); console.log\\(Object.keys\\(e\\).filter\\(k => k.includes\\('Embed'\\)\\)\\);\")",
+      "Bash(node -e \"const ts = require\\('@langchain/google-genai'\\); const e = new ts.GoogleGenerativeAIEmbeddings\\({ apiKey: 'test', model: 'text-embedding-004' }\\); console.log\\('OK'\\);\")",
+      "Bash(node -e \"const fs = require\\('fs'\\); try { JSON.parse\\(fs.readFileSync\\('data/scraped-content.json','utf8'\\)\\); console.log\\('scraped-content.json: VALID'\\); } catch\\(e\\) { console.log\\('scraped-content.json ERROR:', e.message\\); } try { JSON.parse\\(fs.readFileSync\\('data/custom_faq.json','utf8'\\)\\); console.log\\('custom_faq.json: VALID'\\); } catch\\(e\\) { console.log\\('custom_faq.json ERROR:', e.message\\); }\")",
+      "Bash(node -e \"const pkg = require\\('./node_modules/@langchain/google-genai/package.json'\\); console.log\\('version:', pkg.version\\);\")",
+      "Bash(node -e \"const pkg = require\\('./node_modules/@google/generative-ai/package.json'\\); console.log\\('version:', pkg.version\\);\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s -X POST http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{:*)"
+    ]
+  }
+}
