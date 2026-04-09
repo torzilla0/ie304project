@@ -1,151 +1,83 @@
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { Document } from "@langchain/core/documents";
+import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import scrapedData from "../data/scraped-content.json";
 import faqData from "../data/custom_faq.json";
+import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
+import { DocxLoader } from "@langchain/community/document_loaders/fs/docx";
+import fs from "fs/promises";
+import path from "path";
 
 interface StoredDoc {
   doc: Document;
-  tokens: Set<string>;
-  tokenCount: Map<string, number>;
+  embedding: number[];
 }
 
-class SimpleVectorStore {
+class EmbeddingVectorStore {
   private docs: StoredDoc[] = [];
-  private idf: Map<string, number> = new Map();
+  private embeddingModel: GoogleGenerativeAIEmbeddings;
+
+  constructor() {
+    this.embeddingModel = new GoogleGenerativeAIEmbeddings({
+      apiKey: process.env.GOOGLE_API_KEY!,
+      model: "gemini-embedding-001",
+    });
+  }
 
   async addDocuments(documents: Document[]) {
-    // Build document index
-    this.docs = documents.map((doc) => {
-      const tokens = this.tokenize(doc.pageContent);
-      const tokenCount = new Map<string, number>();
-      for (const token of tokens) {
-        tokenCount.set(token, (tokenCount.get(token) || 0) + 1);
-      }
-      return { doc, tokens: new Set(tokens), tokenCount };
-    });
+    // Generate embeddings in batches to avoid rate limits
+    const batchSize = 50;
+    for (let i = 0; i < documents.length; i += batchSize) {
+      const batch = documents.slice(i, i + batchSize);
+      const texts = batch.map((doc) => doc.pageContent);
+      const embeddings = await this.embeddingModel.embedDocuments(texts);
 
-    // Calculate IDF scores
-    const totalDocs = this.docs.length;
-    const documentFrequency = new Map<string, number>();
-
-    for (const { tokens } of this.docs) {
-      for (const token of tokens) {
-        documentFrequency.set(token, (documentFrequency.get(token) || 0) + 1);
+      for (let j = 0; j < batch.length; j++) {
+        this.docs.push({
+          doc: batch[j],
+          embedding: embeddings[j],
+        });
       }
     }
 
-    for (const [token, frequency] of documentFrequency) {
-      this.idf.set(token, Math.log(totalDocs / frequency));
+    console.log(
+      `[VectorStore] Indexed ${this.docs.length} document chunks with embeddings`
+    );
+  }
+
+  private cosineSimilarity(a: number[], b: number[]): number {
+    let dotProduct = 0;
+    let normA = 0;
+    let normB = 0;
+    for (let i = 0; i < a.length; i++) {
+      dotProduct += a[i] * b[i];
+      normA += a[i] * a[i];
+      normB += b[i] * b[i];
     }
-  }
-
-  private tokenize(text: string): string[] {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s]/g, " ")
-      .split(/\s+/)
-      .filter((t) => t.length > 2 && !this.isStopword(t));
-  }
-
-  private isStopword(word: string): boolean {
-    const stopwords = new Set([
-      "the",
-      "a",
-      "an",
-      "and",
-      "or",
-      "but",
-      "in",
-      "on",
-      "at",
-      "to",
-      "for",
-      "of",
-      "with",
-      "is",
-      "are",
-      "was",
-      "were",
-      "be",
-      "have",
-      "has",
-      "do",
-      "does",
-      "did",
-      "will",
-      "would",
-      "could",
-      "should",
-      "may",
-      "might",
-      "must",
-      "can",
-      "this",
-      "that",
-      "these",
-      "those",
-      "from",
-      "by",
-      "as",
-      "about",
-      "than",
-      "into",
-      "through",
-      "during",
-      "each",
-      "if",
-      "which",
-      "who",
-      "why",
-      "how",
-      "what",
-      "when",
-      "where",
-      "ie",
-      "ie300",
-      "ie400",
-      "you",
-      "your",
-      "we",
-      "our",
-      "it",
-      "its",
-    ]);
-    return stopwords.has(word);
+    const denominator = Math.sqrt(normA) * Math.sqrt(normB);
+    if (denominator === 0) return 0;
+    return dotProduct / denominator;
   }
 
   async similaritySearch(query: string, k: number = 5): Promise<Document[]> {
-    const queryTokens = this.tokenize(query);
-    const queryTokenSet = new Set(queryTokens);
+    // Generate embedding for the user query
+    const queryEmbedding = await this.embeddingModel.embedQuery(query);
 
+    // Compute cosine similarity against all stored document embeddings
     const scored = this.docs
-      .map(({ doc, tokenCount }) => {
-        let score = 0;
-        for (const token of queryTokens) {
-          const tf = tokenCount.get(token) || 0;
-          const idf = this.idf.get(token) || 0;
-          score += tf * idf;
-        }
-
-        // Boost exact phrase matches
-        const docText = doc.pageContent.toLowerCase();
-        const query_lower = query.toLowerCase();
-        if (docText.includes(query_lower)) {
-          score += 10;
-        }
-
-        return { doc, score };
-      })
-      .filter(({ score }) => score > 0)
+      .map(({ doc, embedding }) => ({
+        doc,
+        score: this.cosineSimilarity(queryEmbedding, embedding),
+      }))
       .sort((a, b) => b.score - a.score);
 
     return scored.slice(0, k).map((s) => s.doc);
   }
 }
 
-let vectorStorePromise: Promise<SimpleVectorStore> | null = null;
+let vectorStorePromise: Promise<EmbeddingVectorStore> | null = null;
 
-function buildDocuments(): Document[] {
+function buildBaseDocuments(): Document[] {
   const docs: Document[] = [];
 
   for (const page of scrapedData) {
@@ -169,8 +101,53 @@ function buildDocuments(): Document[] {
   return docs;
 }
 
-async function createVectorStore(): Promise<SimpleVectorStore> {
-  const rawDocs = buildDocuments();
+async function loadDirectory(dir: string): Promise<Document[]> {
+  const docs: Document[] = [];
+  try {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const res = path.resolve(dir, entry.name);
+      if (entry.isDirectory()) {
+        docs.push(...(await loadDirectory(res)));
+      } else {
+        const ext = path.extname(res).toLowerCase();
+        try {
+          if (ext === ".txt") {
+            const content = await fs.readFile(res, "utf-8");
+            docs.push(new Document({ pageContent: content, metadata: { source: res, title: entry.name } }));
+          } else if (ext === ".pdf") {
+            const loader = new PDFLoader(res);
+            const loaded = await loader.load();
+            loaded.forEach(d => d.metadata.title = entry.name);
+            docs.push(...loaded);
+          } else if (ext === ".docx") {
+            const loader = new DocxLoader(res);
+            const loaded = await loader.load();
+            loaded.forEach(d => d.metadata.title = entry.name);
+            docs.push(...loaded);
+          }
+        } catch (e) {
+          console.warn(`[VectorStore] Could not read file ${res}:`, e);
+        }
+      }
+    }
+  } catch (e) {
+    // Ignore if directory doesn't exist
+  }
+  return docs;
+}
+
+async function createVectorStore(): Promise<EmbeddingVectorStore> {
+  const rawDocs = buildBaseDocuments();
+
+  try {
+    const addedFilesPath = path.join(process.cwd(), "added_files");
+    const loadedDocs = await loadDirectory(addedFilesPath);
+    rawDocs.push(...loadedDocs);
+    console.log(`[VectorStore] Loaded ${loadedDocs.length} additional documents from added_files/`);
+  } catch (err) {
+    console.warn("[VectorStore] Warning: Could not load added_files directory completely.", err);
+  }
 
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 500,
@@ -179,12 +156,12 @@ async function createVectorStore(): Promise<SimpleVectorStore> {
 
   const splitDocs = await splitter.splitDocuments(rawDocs);
 
-  const store = new SimpleVectorStore();
+  const store = new EmbeddingVectorStore();
   await store.addDocuments(splitDocs);
   return store;
 }
 
-export function getVectorStore(): Promise<SimpleVectorStore> {
+export function getVectorStore(): Promise<EmbeddingVectorStore> {
   if (!vectorStorePromise) {
     vectorStorePromise = createVectorStore();
   }
