@@ -1,0 +1,114 @@
+[
+  {
+    "question": "What is IE 300?",
+    "answer": "IE 300 is the Manufacturing Summer Practice course. It requires students to complete a summer internship at a manufacturing or production-oriented company. The internship must involve physical attendance at the workplace. Students must observe and analyze industrial engineering systems in a manufacturing setting."
+  },
+  {
+    "question": "What is IE 400?",
+    "answer": "IE 400 is the Management Summer Practice course. It focuses on management-oriented internships where students observe and analyze systems involving people, financial resources, processes, and information. IE 400 can also be completed as a project-based internship with a minimum duration of 30 workdays (6 weeks), requiring prior committee approval."
+  },
+  {
+    "question": "How long should my summer internship be?",
+    "answer": "A standard summer practice (IE 300 or IE 400) requires a minimum of 20 workdays (4 weeks) of physical attendance. For project-based IE 400, the minimum duration is 30 workdays (6 weeks)."
+  },
+  {
+    "question": "When should I apply for SGK insurance?",
+    "answer": "You should apply for SGK insurance 2-3 weeks before your internship start date. Leave at least one full week safety margin between your application and the internship start date. Do not apply more than 2 months early or fewer than 5 days before your start date. Applications are processed each Monday for internships beginning within the following two weeks."
+  },
+  {
+    "question": "How do I apply for SGK insurance?",
+    "answer": "1. Login to the OCW platform with your student credentials.\n2. Complete the SGK Insurance Application questionnaire with your identity and company details.\n3. Upload the Declaration Form regarding family health insurance.\n4. Your SGK documents will become available on e-devlet 2-3 workdays before your internship start date."
+  },
+  {
+    "question": "What documents do I need for summer practice?",
+    "answer": "You need: 1) SP Application Letter (if required by the company), 2) SP Protocol Form/Contract (sözleşme, if required), 3) SGK Insurance Application via OCW, 4) Declaration Form for health insurance, 5) SP Evaluation Form (filled by your supervisor), 6) Employer Survey (filled by your supervisor), 7) Your final Summer Practice Report in PDF format, 8) Paid SP Form and bank receipt if you received payment."
+  },
+  {
+    "question": "Where do I submit my summer practice report?",
+    "answer": "You submit your Summer Practice Report via ODTUClass by the announced deadline. The report must be in PDF format only. This is a strict deadline and must be followed. Faculty will check reports for plagiarism and AI-generated content before evaluation."
+  },
+  {
+    "question": "Can I do my internship abroad?",
+    "answer": "Yes, you can complete your internship abroad through the Erasmus Student Internship mobility program. The duration can be 3-12 months. A short-term completion (3 months) counts as either IE 300 or IE 400, not both. Check the Erasmus office website for details."
+  },
+  {
+    "question": "What if I get paid during my internship?",
+    "answer": "If you receive payment during your internship, you must: 1) Complete the 'Paid SP Questionnaire' in the IE300/400 course on OCW, 2) Download, print, sign, and upload the scanned Paid Summer Practice Form in PDF, 3) Upload your bank receipt (PDF) confirming the payment under the ODTUClass assignment."
+  },
+  {
+    "question": "Who is on the SP Committee and how can I contact them?",
+    "answer": "The SP Committee can be reached at ie-staj@metu.edu.tr or by fax at +90 (312) 210 4786. Committee members include: Esra Karasakal (Room 215), Cem İyigün (Room 331), Çiya Aydoğan (Room 214), Mehmet Sencer Zengin (Room 318), Özgür Ünverdi (Room 326), Buğra Öztürk (Room 325), and Ömer Turan Şahinaslan (Room 136)."
+  },
+  {
+    "question": "Can two students do their internship at the same company?",
+    "answer": "Yes, multiple students can work at the same organization. However, each student must submit a separate report. Problem definitions must differ between students, though project parts may align for complex projects. A maximum of two students can work together on related parts."
+  },
+  {
+    "question": "What happens after I submit my report?",
+    "answer": "After submission, faculty members grade the assigned reports. Reports requiring corrections are returned in the final month of the semester. Students receive 2-3 weeks for revisions and must submit corrected work via ODTUClass."
+  },
+  {
+    "question": "How do I find a company for my internship?",
+    "answer": "You can find a company by: 1) Checking the departmental company list, 2) Networking with other students and professionals, 3) Reviewing previous year databases of SP opportunities, 4) Waiting for departmental announcements (though this carries higher risk with limited capacity), 5) Applying independently to companies you're interested in."
+  },
+  {
+    "question": "What is the SP protocol form (sözleşme)?",
+    "answer": "The SP protocol form (sözleşme) is a work contract required by some companies. You need to submit the completed form to the Undergraduate Secretary Office (IE 129). The signed copies can be retrieved within one week."
+  },
+  {
+    "question": "Can I do a voluntary (extra) internship?",
+    "answer": "Yes, optional secondary (voluntary) internships receive SGK coverage up to one month per company, provided your first internship's insurance is already issued. Foreign students cannot participate in voluntary internships. You must leave a minimum of one blank day between consecutive internships."
+  },
+  {
+    "question": "What are the prerequisites for IE 300?",
+    "answer": "To conduct IE 300 Summer Practice, you must have completed: IE 102, IE 251, IE 265, IE 241, OHS 101 (all fall semester courses), AND one of IE 266 or IE 252 (spring semester course). ALL prerequisite courses must be completed with a grade of DD or higher. If any prerequisite has a grade below DD, IE 300 summer practice cannot be conducted. Additionally, if you are on academic probation in the Fall semester, you cannot register for IE 300 even if you completed the practice."
+  },
+  {
+    "question": "What are the prerequisites for IE 400?",
+    "answer": "To conduct IE 400 Summer Practice, you must have completed: IE 300 (previous summer practice), IE 252, IE 323, IE 333, AND any two courses from the set: IE 304, IE 324, IE 372, IE 368. All prerequisite courses must be completed with a grade of DD or higher. If any prerequisite fails this requirement, IE 400 cannot be conducted."
+  },
+  {
+    "question": "What types of companies are accepted for IE 300?",
+    "answer": "IE 300 requires a MANUFACTURING company only. Accepted types include: manufacturing firms (automotive, machine parts, electronics, furniture, textiles, consumer durables like refrigerators/washing machines), and batch process industries (steel, paper mills, pharmaceutical, food and beverages). NOT accepted for IE 300: continuous process industries (cement, concrete, sugar, flour mill) and any service industries (hospitals, hotels, banking, research organizations, transportation, cargo carriers). The internship must be 100% face-to-face in the factory - online or hybrid arrangements are NOT allowed."
+  },
+  {
+    "question": "What types of companies are accepted for IE 400?",
+    "answer": "IE 400 accepts BOTH manufacturing AND service companies. Manufacturing types include all types accepted for IE 300 plus continuous process industries (cement, sugar, flour mill). Service industries accepted for IE 400 include: hospitals, hotels, banking, research organizations (e.g., ODTÜ Teknokent), transportation, cargo carriers, public institutions, and NGOs. For manufacturing companies, the internship must be 100% face-to-face. For service companies, a hybrid arrangement (face-to-face + online) is also acceptable."
+  },
+  {
+    "question": "When is the IE 300 and IE 400 internship period?",
+    "answer": "For the 2025-2026 academic year, both IE 300 and IE 400 summer practices are conducted during Summer 2025. The available time interval is June 25 – September 26, 2025 (approximately 3 months). If you attend summer school, your summer practice period must not overlap with summer school dates. If you are in graduation status and have completed all coursework, you can conduct both IE 300 and IE 400 consecutively during Summer 2025."
+  },
+  {
+    "question": "When is the IE 300 and IE 400 report due date?",
+    "answer": "After completing your summer practice, you must register for IE 300 or IE 400 in the Fall 2025-2026 semester. Summer practice reports are due within the first 4 weeks of the Fall semester. The deadline is October 24, 2025. Reports must be submitted via ODTUClass in PDF format. This is a strict deadline."
+  },
+  {
+    "question": "Can IE 400 be done as a group or project-based internship?",
+    "answer": "Yes, IE 400 has three options: (1) Individual: at least 20 workdays (standard). (2) Group of two students: at least 20 workdays, each student writes their own report, the project/problem must be significantly more complex than individual, notify SP committee in the first week. (3) Project-based: at least 6 weeks (30 workdays), requires a two-page proposal approved by the SP Committee BEFORE the internship starts, content and format are different from standard IE 400 (see the manual). You must get SP Committee approval before starting a project-based IE 400."
+  },
+  {
+    "question": "Can IE 400 be done during winter break?",
+    "answer": "Yes, IE 400 can be conducted during the winter semester break, provided that at least 20 workdays are available within that break period."
+  },
+  {
+    "question": "What is the Systems Design (SD) project in IE 400?",
+    "answer": "During IE 400, students are required to search for a 'Systems Design Project' opportunity at the company. The summer practice is a good opportunity to identify interesting engineering problems for the SD project. Ask engineers about potential challenging problems. Once you identify a suitable problem, you must check it with the SD Committee (NOT the SP Committee). The SD project is separate from the IE 400 summer practice report."
+  },
+  {
+    "question": "What are the two sections of the IE 400 report?",
+    "answer": "The IE 400 summer practice report consists of two sections: (1) 'Questions' section and (2) 'Problem/Project' section. Both sections are graded separately. A grade of S (Satisfactory) is required in BOTH sections to pass IE 400. IE 400 has two types of manuals: the Manufacturing Manual and the Service Manual - use the one that matches your company type."
+  },
+  {
+    "question": "Is my summer practice report checked for AI-generated content?",
+    "answer": "Yes, for IE 400 reports are checked both for plagiarism (similarity must be less than 20%) AND for AI-generated content. For IE 300, reports are checked for plagiarism. You should write your report based on your own observations and analysis at the company. Submit in PDF format via ODTUClass Turnitin assignment."
+  },
+  {
+    "question": "Which companies are currently offering summer practice opportunities?",
+    "answer": "Current SP opportunities (2025) include: MS Spektral Savunma Sanayi (Başkent OSB, production planning, IE 400 preferred), Noksel Çelik Boru Sanayi (noksel@noksel.com.tr), Koçtaş STEP 2025 (IE 400, hybrid, apply at kockariyerim.com), İGA İstanbul Airport internship program, ELTAŞ Transformatör (Aliağa/İzmir, ie-staj@metu.edu.tr), TEI TUSAŞ Motor Sanayii (Eskişehir, IE 400), MPES Mühendislik (Ankara), Anadolu Sigorta (İstanbul, IE 400), EUROPOWER ENERJİ (Ankara, IE 400), and others. Check the SP website (https://sp-ie.metu.edu.tr/en) under SP Opportunities regularly for the latest listings. Some companies are assigned by the department, others you contact directly."
+  },
+  {
+    "question": "What is the evaluation form and how is it submitted?",
+    "answer": "The Evaluation Form (Başarı Belgesi) and Employer Survey (İşveren Anketi) are two-page forms that must be downloaded from the SP website (Documents/Forms tab). Attach your recent photo to the first page. Your supervisor/company fills these out at the END of your summer practice. The company emails the completed forms to sp-belge@metu.edu.tr. You do NOT submit this yourself - the company does."
+  }
+]

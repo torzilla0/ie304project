@@ -1,0 +1,16 @@
+- now chatbot can see the past conversations within the chat.
+- now .doc files are also read and included.
+- now server can check if its SP opp. info or forms/manuals/documents are up-to-date
+- now server can update SP Oppotunities info
+- now server can update files from …/en/forms automatically
+- checks and updates are scheduled once a day at 12:30 server time
+
+TO DO
+- server must have Python installed
+- server must have libraries specified requirements.txt file, after Python installation through command prompt:
+pip install -r requirements.txt
+- server compatibility must be checked
+- Pinecone database must be cleaned and all data should be re-sent
+- scheduler.ts must be run every time server deploys
+
+Note: seed.ts no longer runs the funtion `run()` anymore.
